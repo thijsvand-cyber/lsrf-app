@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klak Af! — Cross</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Chakra+Petch:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#2a0a19}
+a{color:#FFFFFF}a:hover{color:#EEFF07}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #043241; color: #FFFFFF; font-family: Archivo, system-ui, sans-serif; display: flex; flex-direction: column">
+
+<header style="flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 48px 12px 12px; background: #021F29">
+<a href="KlakAf.dc.html" aria-label="Back to channels" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<div style="font-weight: 900; font-stretch: 125%; font-size: 18px; text-transform: uppercase; color: #EEFF07">Klak Af! Cross</div>
+<div style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: #A9C4CD">Team Bomba Join · [###] members</div>
+</div>
+<button aria-label="Channel info" style="width: 44px; height: 44px; border: none; background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5v.01"></path></svg></button>
+</header>
+
+<a href="Team.dc.html" style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 16px; background: {{pink}}; color: #043241; text-decoration: none">
+<span style="font-family: 'Chakra Petch', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase">Pinned · Next race</span>
+<span style="font-weight: 900; font-stretch: 62.5%; font-size: 22px; text-transform: uppercase">CC Zeddam · 08/11 →</span>
+</a>
+
+<div style="flex-grow: 1; overflow-y: auto; padding: 16px 14px; display: flex; flex-direction: column; gap: 14px">
+<div style="align-self: center; font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: #A9C4CD; text-transform: uppercase">Today</div>
+<sc-for list="{{messages}}" as="m" hint-placeholder-count="5">
+<div style="{{m.rowStyle}}">
+<sc-if value="{{m.other}}" hint-placeholder-val="{{ true }}">
+<div style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; color: #EEFF07">{{m.who}} <span style="color: #A9C4CD; font-weight: 500">{{m.time}}</span></div>
+</sc-if>
+<div style="{{m.bubbleStyle}}">{{m.text}}</div>
+<sc-if value="{{m.hasKlak}}" hint-placeholder-val="{{ false }}">
+<button onClick="{{m.klak}}" aria-label="{{m.klakLabel}}" style="{{m.klakStyle}}">KLAK! {{m.klaks}}</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+
+<form onSubmit="{{send}}" style="flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 10px 12px 30px; background: #021F29">
+<label style="flex-grow: 1; display: flex">
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message Klak Af! Cross</span>
+<input value="{{draft}}" onChange="{{onDraft}}" placeholder="Message Klak Af! Cross" style="flex-grow: 1; height: 46px; padding: 0 14px; border: none; border-radius: 4px; background: #0B4053; color: #FFFFFF; font-family: inherit; font-size: 15px; outline: none">
+</label>
+<button type="submit" aria-label="Send" style="width: 46px; height: 46px; border: none; border-radius: 4px; background: #D32236; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></button>
+</form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"pink":{"editor":"color","default":"#F062F9","options":["#F062F9","#BC54C8","#EEFF07"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = {
+draft: '',
+klaked: {},
+msgs: [
+{ id: 1, who: '[Rider A]', time: '18:02', text: "Who's driving to the race Sunday? I have room for 2 bikes.", klaks: 3 },
+{ id: 2, who: '[Rider B]', time: '18:05', text: 'Me! Can you pick me up at [place]?', klaks: 0 },
+{ id: 3, who: 'You', time: '18:11', text: 'Count me in too. Bringing the pressure gauge.', klaks: 0, mine: true },
+{ id: 4, who: '[Rider C]', time: '18:20', text: 'Course recon Saturday at [time]. Mud forecast: yes.', klaks: 7 },
+{ id: 5, who: '[Rider A]', time: '18:24', text: 'Just. Show. Up.', klaks: 12 }
+]
+};
+}
+renderVals() {
+const pink = this.props.pink ?? '#F062F9';
+const klaked = this.state.klaked;
+const messages = this.state.msgs.map((m) => {
+const mine = !!m.mine;
+const on = !!klaked[m.id];
+const count = m.klaks + (on ? 1 : 0);
+return {
+who: m.who, time: m.time, text: m.text, other: !mine,
+hasKlak: !mine,
+klaks: count,
+klakLabel: on ? 'Remove Klak' : 'Give a Klak',
+klak: () => this.setState({ klaked: Object.assign({}, klaked, { [m.id]: !on }) }),
+klakStyle: 'align-self: flex-start; height: 30px; padding: 0 10px; border-radius: 15px; cursor: pointer; font-family: Chakra Petch, sans-serif; font-size: 12px; font-weight: 700; ' + (on ? 'border: none; background: #EEFF07; color: #043241' : 'border: 1px solid #2A6175; background: transparent; color: #DCE8EC'),
+rowStyle: 'display: flex; flex-direction: column; gap: 5px; max-width: 82%; ' + (mine ? 'align-self: flex-end; align-items: flex-end' : 'align-self: flex-start'),
+bubbleStyle: 'padding: 10px 13px; border-radius: 4px; font-size: 15px; line-height: 1.4; ' + (mine ? 'background: ' + pink + '; color: #043241; font-weight: 600' : 'background: #0B4053; color: #FFFFFF')
+};
+});
+return {
+pink, messages,
+draft: this.state.draft,
+onDraft: (e) => this.setState({ draft: e.target.value }),
+send: (e) => {
+e.preventDefault();
+const t = this.state.draft.trim();
+if (!t) return;
+const id = Date.now();
+this.setState({ draft: '', msgs: this.state.msgs.concat([{ id, who: 'You', time: 'now', text: t, klaks: 0, mine: true }]) });
+}
+};
+}
+}
+</script>
+</body>
+</html>

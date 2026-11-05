@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klak Af! — Channels</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Chakra+Petch:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#2a0a19}
+a{color:#FFFFFF}a:hover{color:#EEFF07}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #043241; color: #FFFFFF; font-family: Archivo, system-ui, sans-serif">
+<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 84px; overflow-y: auto; padding: 52px 16px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end">
+<h1 style="margin: 0; font-weight: 900; font-stretch: 125%; font-size: 44px; line-height: 0.9; text-transform: uppercase; color: #EEFF07">Klak<br>Af!</h1>
+<button aria-label="New message" style="width: 48px; height: 48px; border-radius: 24px; border: none; background: {{pink}}; color: #043241; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+</header>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; color: #C9DCE2">KLAK AF! Live Slow Ride Fast Community</p>
+
+<label style="flex-shrink: 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 14px; background: #0B4053; border-radius: 4px; color: #C9DCE2">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search channels</span>
+<input type="search" placeholder="Search channels and people" style="flex-grow: 1; border: none; background: transparent; color: #FFFFFF; font-family: inherit; font-size: 15px; outline: none">
+</label>
+
+<section style="display: flex; flex-direction: column">
+<h2 style="margin: 0 0 4px; font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{pink}}">Je groepen</h2>
+<a href="Channel.dc.html" style="display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 8px 10px; margin: 0 -10px 4px; background: #0B4053; border-radius: 4px; text-decoration: none; color: #FFFFFF">
+<div style="width: 40px; height: 40px; border-radius: 4px; flex-shrink: 0; background: #EEFF07; color: #043241; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M4 10v4h3l7 4V6L7 10z"></path><path d="M17.5 9a4 4 0 0 1 0 6"></path></svg></div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 16px; font-weight: 900">Aankondigingen</span><span style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: #A9C4CD">17:20</span></div>
+<div style="font-size: 13px; color: #A9C4CD; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Beste klakkers! [Announcement]</div>
+</div>
+</a>
+<sc-for list="{{channels}}" as="c" hint-placeholder-count="6">
+<a href="Channel.dc.html" style="display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 8px 0; border-bottom: 1px solid #12495D; text-decoration: none; color: #FFFFFF">
+<div style="{{c.iconStyle}}">{{c.tag}}</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<div style="display: flex; justify-content: space-between; gap: 8px"><span style="{{c.nameStyle}}">{{c.name}}</span><span style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: #A9C4CD; flex-shrink: 0">{{c.time}}</span></div>
+<div style="font-size: 13px; color: #A9C4CD; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.last}}</div>
+</div>
+<sc-if value="{{c.hasUnread}}" hint-placeholder-val="{{ true }}">
+<span style="min-width: 26px; height: 26px; border-radius: 13px; background: {{pink}}; color: #043241; font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 7px; box-sizing: border-box">{{c.unread}}</span>
+</sc-if>
+</a>
+</sc-for>
+</section>
+
+<section style="display: flex; flex-direction: column">
+<h2 style="margin: 0 0 4px; font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{pink}}">Direct</h2>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 60px; border-bottom: 1px solid #12495D">
+<div style="width: 40px; height: 40px; border-radius: 20px; background: #EEFF07; color: #043241; font-family: 'Chakra Petch', sans-serif; font-weight: 700; display: flex; align-items: center; justify-content: center">[AB]</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px"><div style="font-size: 15px; font-weight: 800">[Rider name]</div><div style="font-size: 13px; color: #A9C4CD">Spare tubs for Sunday?</div></div>
+</div>
+</section>
+</div>
+
+<nav aria-label="Main" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: #021F29; display: flex; justify-content: space-around; align-items: flex-start; padding-top: 8px; box-sizing: border-box">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"></path></svg>Home</a>
+<a href="Podcasts.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"></path><rect x="3" y="14" width="4" height="7" rx="1.5"></rect><rect x="17" y="14" width="4" height="7" rx="1.5"></rect></svg>Listen</a>
+<a href="KlakAf.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #EEFF07"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>Klak Af!</a>
+<a href="Team.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14a6 6 0 0 1 3.5 6"></path></svg>Team</a>
+<a href="Shop.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>Shop</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"pink":{"editor":"color","default":"#F062F9","options":["#F062F9","#BC54C8","#EEFF07"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const pink = this.props.pink ?? '#F062F9';
+const list = [
+{ name: 'Boulevard', tag: 'BLVD', last: '[Rider]: [Latest message]', time: '20:15', unread: 6 },
+{ name: 'Marktplaats', tag: 'MRKT', last: '[Rider] is deelnemer geworden', time: '20:11', unread: 0 },
+{ name: 'Ride Fast Coppi', tag: 'RF', last: '[Rider]: [Latest message]', time: '19:54', unread: 3 },
+{ name: 'Koers Coppi', tag: 'KRS', last: '[Rider]: [Latest message]', time: '19:16', unread: 0 },
+{ name: 'Live Slow Bartali', tag: 'LS', last: '[Rider] is deelnemer geworden', time: '17:19', unread: 0 },
+{ name: 'Podcast Bartali', tag: 'POD', last: '[Rider] is deelnemer geworden', time: '17:18', unread: 0 },
+{ name: 'Cross', tag: 'CX', last: "[Rider]: Who's driving to Zeddam Sunday?", time: 'Gisteren', unread: 12 }
+];
+const channels = list.map((c) => {
+const u = c.unread > 0;
+return {
+name: c.name, tag: c.tag, time: c.time, last: c.last, unread: c.unread, hasUnread: u,
+iconStyle: 'width: 40px; height: 40px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: Chakra Petch, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.02em; ' + (u ? 'background: ' + pink + '; color: #043241' : 'background: #0B4053; color: #C9DCE2'),
+nameStyle: 'font-size: 16px; ' + (u ? 'font-weight: 900' : 'font-weight: 600; color: #DCE8EC')
+};
+});
+return { pink, channels };
+}
+}
+</script>
+</body>
+</html>

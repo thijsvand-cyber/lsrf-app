@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Team Bomba Join — Cyclocross</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Chakra+Petch:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#2a0a19}
+a{color:#043241}a:hover{color:#021d26}
+.ph{background:repeating-linear-gradient(135deg,#0A3E50 0 14px,#06384A 14px 28px)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: {{pink}}; color: #043241; font-family: Archivo, system-ui, sans-serif">
+<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 84px; overflow-y: auto; padding: 52px 16px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+
+<header style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-weight: 900; font-stretch: 125%; font-size: 30px; line-height: 0.92; text-transform: uppercase">Team<br>Bomba Join</h1>
+<div style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">Cyclocross · produced by Live Slow Ride Fast</div>
+</header>
+
+<div role="tablist" aria-label="Team sections" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: #043241; border-radius: 4px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isCal}}" hint-placeholder-val="{{ true }}">
+<section style="display: flex; flex-direction: column">
+<a href="Channel.dc.html" style="display: flex; flex-direction: column; gap: 8px; padding: 14px; margin-bottom: 6px; background: #043241; color: #FFFFFF; border-radius: 4px; text-decoration: none">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: {{pink}}">TODAY · RACE DAY</span>
+<span style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; color: #EEFF07">LIVE IN KLAK AF! CROSS →</span>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<span style="font-weight: 900; font-stretch: 62.5%; font-size: 44px; line-height: 0.9; text-transform: uppercase; color: #EEFF07">Middelkerke</span>
+<span style="font-weight: 900; font-stretch: 62.5%; font-size: 44px; line-height: 0.9; color: #EEFF07">05/11</span>
+</div>
+</a>
+<sc-for list="{{races}}" as="r" hint-placeholder-count="8">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 2px 6px; border-bottom: 2px solid #043241">
+<span style="font-weight: 900; font-stretch: 62.5%; font-size: 36px; line-height: 0.95; text-transform: uppercase">{{r.name}}</span>
+<span style="font-weight: 900; font-stretch: 62.5%; font-size: 36px; line-height: 0.95">{{r.date}}</span>
+</div>
+</sc-for>
+<button style="align-self: flex-start; margin-top: 14px; height: 44px; padding: 0 16px; border: none; border-radius: 2px; background: #D32236; color: #FFFFFF; font-family: 'Chakra Petch', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer">Add calendar to my phone →</button>
+</section>
+</sc-if>
+
+<sc-if value="{{isRiders}}" hint-placeholder-val="{{ false }}">
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{riders}}" as="p" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; background: #FFFFFF; border-radius: 4px; overflow: hidden">
+<div class="ph" style="aspect-ratio: 4 / 5; position: relative"><span style="position: absolute; left: 10px; top: 8px; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; color: #9FC3CF">[PORTRAIT]</span></div>
+<div style="padding: 10px; display: flex; flex-direction: column; gap: 2px">
+<div style="font-weight: 900; font-stretch: 62.5%; font-size: 24px; line-height: 1; text-transform: uppercase">[Rider name]</div>
+<div style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: #4A6670">{{p.cat}}</div>
+</div>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{isPartners}}" hint-placeholder-val="{{ false }}">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px; background: #043241; color: #FFFFFF; border-radius: 4px">
+<div style="font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: {{pink}}">TITLE PARTNER</div>
+<div style="font-weight: 900; font-stretch: 125%; font-size: 34px; text-transform: uppercase; color: #EEFF07">JOIN</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; color: #DCE8EC">Improve your ride with the training app the team uses.</p>
+<button style="align-self: flex-start; height: 44px; padding: 0 16px; border: none; border-radius: 2px; background: #D32236; color: #FFFFFF; font-family: 'Chakra Petch', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer">Try JOIN for free →</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="height: 84px; background: #FFFFFF; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px">[PARTNER LOGO]</div>
+<div style="height: 84px; background: #FFFFFF; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px">[PARTNER LOGO]</div>
+<div style="height: 84px; background: #FFFFFF; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px">[PARTNER LOGO]</div>
+<div style="height: 84px; background: #FFFFFF; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px">[PARTNER LOGO]</div>
+</div>
+</section>
+</sc-if>
+</div>
+
+<nav aria-label="Main" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: #043241; display: flex; justify-content: space-around; align-items: flex-start; padding-top: 8px; box-sizing: border-box">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"></path></svg>Home</a>
+<a href="Podcasts.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"></path><rect x="3" y="14" width="4" height="7" rx="1.5"></rect><rect x="17" y="14" width="4" height="7" rx="1.5"></rect></svg>Listen</a>
+<a href="KlakAf.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>Klak Af!</a>
+<a href="Team.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #EEFF07"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14a6 6 0 0 1 3.5 6"></path></svg>Team</a>
+<a href="Shop.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; min-height: 48px; justify-content: center; text-decoration: none; font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #C9DCE2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>Shop</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"pink":{"editor":"color","default":"#F062F9","options":["#F062F9","#BC54C8","#EEFF07"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { tab: 'cal' };
+}
+renderVals() {
+const pink = this.props.pink ?? '#F062F9';
+const tab = this.state.tab;
+const defs = [['cal', 'Calendar'], ['riders', 'Riders'], ['partners', 'Partners']];
+const tabs = defs.map(([id, label]) => {
+const on = tab === id;
+return {
+label, sel: on ? 'true' : 'false',
+pick: () => this.setState({ tab: id }),
+style: 'height: 44px; border-radius: 2px; border: none; font-family: Chakra Petch, sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; cursor: pointer; ' + (on ? 'background: #EEFF07; color: #043241' : 'background: transparent; color: #FFFFFF')
+};
+});
+const races = [
+['CC Zeddam', '08/11'], ['Niel', '11/11'], ['Merksplas', '14/11'], ['Hamme-Zogge', '15/11'],
+['Lokeren', '21/11'], ['Beringen', '22/11'], ['Ostrava', '27/11'], ['Tabor', '29/11'],
+['Glasgow', '13/12'], ['Mol', '17/12'], ['Antwerpen', '19/12'], ['Koksijde', '20/12']
+].map(([name, date]) => ({ name, date }));
+const riders = ['[Category]', '[Category]', '[Category]', '[Category]'].map((cat) => ({ cat }));
+return {
+pink, tabs, races, riders,
+isCal: tab === 'cal', isRiders: tab === 'riders', isPartners: tab === 'partners'
+};
+}
+}
+</script>
+</body>
+</html>
